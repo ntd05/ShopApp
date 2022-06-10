@@ -1,0 +1,106 @@
+{
+    "categories" : [
+    {
+        "id": 1,
+        "name": "Ao khoac",
+        "img": "ha"
+      },
+      {
+        "id": 2,
+        "name": "Ao len",
+        "img": "ha"
+      },
+      {
+        "id": 3,
+        "name": "Ao ni",
+        "img": "ha"
+      },
+      {
+        "id": 4,
+        "name": "Ao thun",
+        "img": "ha"
+      },
+      {
+        "id": 5,
+        "name": "Ao hai day",
+        "img": "ha"
+      },
+      {
+        "id": 6,
+        "name": "Ao len",
+        "img": "ha"
+      }
+    ],
+"products": [
+    {
+    "id": 1,
+    "images": [
+      {
+        "url":
+          "https://www.google.com/imgres?imgurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fpublish%2Fthumbnail%2F32807%2F555x312xdefault%2Fupload%2F32807%2F20180921%2Fanhr82.jpg&imgrefurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fmn-lynamde%2Fhinh-anh%2Fanhr.html&tbnid=lDlPEe504KDU_M&vet=12ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG..i&docid=emL41ZuoM8cr2M&w=555&h=312&q=anhr&ved=2ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG"
+      }
+    ],
+    "name": "Ao khoac",
+    "price": "100000",
+    "category": 1
+  },
+  {
+    "id": 2,
+    "images": [
+      {
+        "url":
+          "https://www.google.com/imgres?imgurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fpublish%2Fthumbnail%2F32807%2F555x312xdefault%2Fupload%2F32807%2F20180921%2Fanhr82.jpg&imgrefurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fmn-lynamde%2Fhinh-anh%2Fanhr.html&tbnid=lDlPEe504KDU_M&vet=12ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG..i&docid=emL41ZuoM8cr2M&w=555&h=312&q=anhr&ved=2ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG"
+      }
+    ],
+    "name": "Ao len",
+    "price": "100000",
+    "category": 1
+  },
+  {
+    "id": 3,
+    "images": [
+      {
+        "url":
+          "https://www.google.com/imgres?imgurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fpublish%2Fthumbnail%2F32807%2F555x312xdefault%2Fupload%2F32807%2F20180921%2Fanhr82.jpg&imgrefurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fmn-lynamde%2Fhinh-anh%2Fanhr.html&tbnid=lDlPEe504KDU_M&vet=12ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG..i&docid=emL41ZuoM8cr2M&w=555&h=312&q=anhr&ved=2ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG"
+      }
+    ],
+    "name": "Ao ni",
+    "price": "100000",
+    "category": 1
+  },
+  {
+    "id": 4,
+    "images": [
+      {
+        "url":
+          "https://www.google.com/imgres?imgurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fpublish%2Fthumbnail%2F32807%2F555x312xdefault%2Fupload%2F32807%2F20180921%2Fanhr82.jpg&imgrefurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fmn-lynamde%2Fhinh-anh%2Fanhr.html&tbnid=lDlPEe504KDU_M&vet=12ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG..i&docid=emL41ZuoM8cr2M&w=555&h=312&q=anhr&ved=2ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG"
+      }
+    ],
+    "name": "Ao thun",
+    "price": "100000",
+    "category": 1
+  },
+  {
+    "id": 5,
+    "images": [
+      {
+        "url":
+          "https://www.google.com/imgres?imgurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fpublish%2Fthumbnail%2F32807%2F555x312xdefault%2Fupload%2F32807%2F20180921%2Fanhr82.jpg&imgrefurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fmn-lynamde%2Fhinh-anh%2Fanhr.html&tbnid=lDlPEe504KDU_M&vet=12ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG..i&docid=emL41ZuoM8cr2M&w=555&h=312&q=anhr&ved=2ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG"
+      }
+    ],
+    "name": "Ao hai day",
+    "price": "100000",
+    "category": 1
+  },
+  {
+    "id": 6,
+    "images": [
+      {
+        "url":
+          "https://www.google.com/imgres?imgurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fpublish%2Fthumbnail%2F32807%2F555x312xdefault%2Fupload%2F32807%2F20180921%2Fanhr82.jpg&imgrefurl=http%3A%2F%2Fpgdhungha.edu.vn%2Fmn-lynamde%2Fhinh-anh%2Fanhr.html&tbnid=lDlPEe504KDU_M&vet=12ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG..i&docid=emL41ZuoM8cr2M&w=555&h=312&q=anhr&ved=2ahUKEwiI05CAleL3AhUkz4sBHVM6AEwQMygAegQIARBG"
+      }
+    ],
+    "name": "Ao len",
+    "price": "100000",
+    "category": 1
+  }]}

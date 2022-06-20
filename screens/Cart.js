@@ -6,7 +6,7 @@ import firebase from '../firebase';
 import { getDatabase, ref, onValue } from "firebase/database";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Clothes from '../assets/Clothes.png';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CartListItem from '../components/CartListItem';
 
 
@@ -25,7 +25,7 @@ export default function Cart() {
         contentContainerStyle={styles.container}
         renderItem={({ item }) =>
           <View>
-            <CartListItem productCartItems={item.product} cartQuantity={item.cartQuantity}/>
+            <CartListItem productCartItems={item.product} cartQuantity={item.cartQuantity} />
           </View>
         }
         keyExtractor={(item) => `${item.product.id}`} />

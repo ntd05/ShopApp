@@ -69,7 +69,7 @@ export default function Login() {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Register')} >
-          <Text style={styles.forgot_button}>Register</Text>
+        <Text style={styles.forgot_button}>Register</Text>
       </TouchableOpacity>
     </View >
   );

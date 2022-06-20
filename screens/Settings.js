@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { StyleSheet, FlatList, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList, View, Text, TouchableOpacity, Image } from 'react-native';
 import CategoryListItem from '../components/CategoryListItem';
 import { useNavigation } from '@react-navigation/native';
 import firebase from '../firebase';

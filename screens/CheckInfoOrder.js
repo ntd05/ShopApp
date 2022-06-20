@@ -6,28 +6,41 @@ import firebase from '../firebase';
 import { getDatabase, ref, onValue } from "firebase/database";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Clothes from '../assets/Clothes.png';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addCartFirebase } from '../store/cartReducer';
 import CartListItem from '../components/CartListItem';
 import Cart from './Cart';
 
 
 export default function CheckInfoOrder() {
 
-  const navigation = useNavigation();
 
-  // const [products, setProducts] = useState([]);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
+  const navigation = useNavigation();
   const cart = useSelector(state => state.cart);
-  const productCart = cart.cartItems;
+
+  const dispatch = useDispatch();
+
+  const handleOrder = () => {
+    navigation.navigate('Order');
+
+    dispatch(addCartFirebase({ name, phone, address }))
+  }
+
 
   return (
     <View>
       <View style={styles.Address}>
-        <Text style={{fontSize: 18}}>Địa chỉ nhận hàng</Text>
+        <Text style={{ fontSize: 18 }}>Địa chỉ nhận hàng</Text>
         <View style={styles.inputView}>
           <TextInput
             style={styles.TextInput}
             placeholder="Họ tên"
             placeholderTextColor="#98acb5"
+            onChangeText={(name) => setName(name)}
           />
         </View>
         <View style={styles.inputView}>
@@ -35,6 +48,7 @@ export default function CheckInfoOrder() {
             style={styles.TextInput}
             placeholder="Số điện thoại"
             placeholderTextColor="#98acb5"
+            onChangeText={(phone) => setPhone(phone)}
           />
         </View>
         <View style={styles.inputView}>
@@ -42,14 +56,17 @@ export default function CheckInfoOrder() {
             style={styles.TextInput}
             placeholder="Địa chỉ"
             placeholderTextColor="#98acb5"
+            onChangeText={(address) => setAddress(address)}
           /></View>
       </View>
-      <Cart/>
+      <View style={styles.viewcart}>
+        <Cart />
+      </View>
       <View style={styles.Orders}>
         <Text >{cart.cartTotalAmount}</Text>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.buttonOrder}
-          onPress={() => navigation.navigate('Order')}>
+          onPress={handleOrder}>
           <Text style={styles.textOrder}>Đặt hàng</Text>
         </TouchableOpacity>
       </View>
@@ -92,6 +109,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 75
 
+  },
+  viewcart: {
+    marginTop: 20,
+    height: 340,
   },
   buttonOrder: {
     flexDirection: 'row',

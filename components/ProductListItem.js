@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { addCart, addToCart, getTotals } from '../store/cartReducer';
 import { useSelector } from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { formatPriceType } from '../lib/utils';
 
 export default function ProductListItem(props) {
     const navigation = useNavigation();
@@ -14,16 +15,16 @@ export default function ProductListItem(props) {
     const cart = useSelector(state => state.cart);
     useEffect(() => {
         dispatch(getTotals());
-      }, [cart, dispatch]);
+    }, [cart, dispatch]);
 
     const handleClickAdd = (product) => {
         Alert.alert('Đã thêm sản phẩm');
         //dispatch(addCart({ product }));
-        dispatch(addToCart({product}));
+        dispatch(addToCart({ product }));
     }
 
     const editProduct = (product) => {
-        navigation.navigate('EditProduct',{
+        navigation.navigate('EditProduct', {
             productEdit: product
         });
     }
@@ -34,9 +35,8 @@ export default function ProductListItem(props) {
                 <Image style={styles.img} source={{ uri: product.img }} />
                 <View style={styles.info}>
                     <Text style={styles.name}>{product.name}</Text>
-                    <Text style={styles.price}>Còn : {product.quantity}</Text>
                     <View style={styles.priceRow}>
-                        <Text style={styles.price}>{product.price}</Text>
+                        <Text style={styles.price}>{formatPriceType(product.price)}</Text>
                         <TouchableOpacity onPress={onAddToCartClick}>
                             <Text style={styles.cartText}>
                                 <Ionicons

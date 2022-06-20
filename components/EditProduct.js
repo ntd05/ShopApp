@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { StyleSheet, Button, View, Text, TouchableOpacity, Image, FlatList, Alert, TextInput } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image, FlatList, Alert, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import firebase from '../firebase';
 import { getDatabase, ref, child, push, update, setPriority, remove, set } from "firebase/database";
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Clothes from '../assets/Clothes.png';
-import { useSelector } from 'react-redux';
-import CartListItem from '../components/CartListItem';
-
+import { v4 } from 'uuid'
 
 export default function EditProduct({ route }) {
 
@@ -17,22 +12,22 @@ export default function EditProduct({ route }) {
 
     const [imgEdit, setImgEdit] = useState(productEdit.img);
     const [nameEdit, setNameEdit] = useState(productEdit.name);
-    const [quantityEdit, setQuantityEdit] = useState(productEdit.quantity);
     const [priceEdit, setPriceEdit] = useState(productEdit.price);
 
-
     function addProduct() {
-        set(ref(db, 'products/' + 9),
+        const db = getDatabase();
+        // const idAdd = Math.floor(Math.random() * 1000);
+        const idAdd = v4();
+        set(ref(db, 'products/' + idAdd),
             {
-                id: 9,
+                id: idAdd,
                 category: productEdit.category,
                 img: imgEdit,
                 name: nameEdit,
-                quantity: quantityEdit,
                 price: priceEdit
             })
             .then(() => {
-                console.log(idcount);
+                console.log(idAdd);
             })
             .catch((e) => {
                 console.log(e);
@@ -48,7 +43,6 @@ export default function EditProduct({ route }) {
             category: productEdit.category,
             img: imgEdit,
             name: nameEdit,
-            quantity: quantityEdit,
             price: priceEdit
         })
             .then(() => {
@@ -78,10 +72,12 @@ export default function EditProduct({ route }) {
                     onPress: () => console.log("Cancel Pressed"),
                     style: "cancel"
                 },
-                { text: "OK", onPress: () => {
-                    editProduct();
-                    navigation.goBack();
-                }}
+                {
+                    text: "OK", onPress: () => {
+                        editProduct();
+                        navigation.goBack();
+                    }
+                }
             ]
         );
 
@@ -97,10 +93,12 @@ export default function EditProduct({ route }) {
                     onPress: () => console.log("Cancel Pressed"),
                     style: "cancel"
                 },
-                { text: "OK", onPress: () => {
-                    deleteProduct();
-                    navigation.goBack();
-                }}
+                {
+                    text: "OK", onPress: () => {
+                        deleteProduct();
+                        navigation.goBack();
+                    }
+                }
             ]
         );
 
@@ -123,18 +121,12 @@ export default function EditProduct({ route }) {
                     onChangeText={(name) => setNameEdit(name)}>{productEdit.name}</TextInput>
             </View>
             <View style={styles.container}>
-                <Text style={styles.attributeEdit}>Còn</Text>
-                <TextInput
-                    style={styles.formInput}
-                    onChangeText={(quantity) => setQuantityEdit(quantity)}>{productEdit.quantity}</TextInput>
-            </View>
-            <View style={styles.container}>
                 <Text style={styles.attributeEdit}>Giá</Text>
                 <TextInput
                     style={styles.formInput}
                     onChangeText={(price) => setPriceEdit(price)}>{productEdit.price}</TextInput>
             </View>
-            <View  style={styles.selection}>
+            <View style={styles.selection}>
                 <TouchableOpacity style={styles.editBtn}
                     onPress={() => {
                         addProduct();
@@ -142,9 +134,11 @@ export default function EditProduct({ route }) {
                             "Thêm",
                             "Thêm thành công",
                             [
-                                { text: "OK", onPress: () => {
-                                    navigation.goBack();
-                                }}
+                                {
+                                    text: "OK", onPress: () => {
+                                        navigation.goBack();
+                                    }
+                                }
                             ]
                         );
                     }}>

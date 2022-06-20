@@ -1,28 +1,44 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useSelector } from 'react-redux';
+import { decreaseCart, addToCart } from '../store/cartReducer';
+import { useSelector, useDispatch } from 'react-redux';
+import _ from 'lodash'
+import { formatPriceType } from '../lib/utils';
 
 export default function CartListItem(props) {
-  const { productCartItems, cartQuantity} = props;  
+  const { productCartItems, cartQuantity, isHideBtn = false } = props;
+  const dispatch = useDispatch();
 
-  const cart = useSelector((state) => state.cart);
-  console.log(productCartItems);
+  const handleClickDecreaseCart = (product) => {
+    dispatch(decreaseCart({ product }));
+  }
+
+  const handleClickAddCart = (product) => {
+    dispatch(addToCart({ product }));
+  }
 
   return (
     <View>
-      <View style={styles.container}>
-        <Image style={styles.categoryImage} source={{ uri: productCartItems.img }} />
-        <View style={styles.infoProduct}>
-          <Text style={styles.title}>{productCartItems.name}</Text>
-          <Text style={styles.price}>{productCartItems.price}</Text>
+      {productCartItems &&
+        <View style={styles.container}>
+          <Image style={styles.categoryImage} source={{ uri: productCartItems.img }} />
+          <View style={styles.infoProduct}>
+            <Text style={styles.title}>{productCartItems.name}</Text>
+            <Text style={styles.price}>{formatPriceType(productCartItems.price)}</Text>
+          </View>
+          <View style={styles.changeNumber}>
+            {!isHideBtn &&
+              <Ionicons name="remove-circle" style={styles.icons} onPress={() => handleClickDecreaseCart(productCartItems)} />
+            }
+            {isHideBtn && <Text>X </Text>}
+            <Text style={styles.numberProduct}>{cartQuantity}</Text>
+            {!isHideBtn &&
+              <Ionicons name="add-circle" style={styles.icons} onPress={() => handleClickAddCart(productCartItems)} />
+            }
+          </View>
         </View>
-        <View style={styles.changeNumber}>
-          <Ionicons name="remove-circle" style={styles.icons} />
-          <Text style={styles.numberProduct}>{cartQuantity}</Text>
-          <Ionicons name="add-circle" style={styles.icons} />
-        </View>
-      </View>
+      }
     </View>
   );
 };
@@ -51,7 +67,8 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 8,
     fontWeight: '700',
-    fontSize: 20
+    fontSize: 18,
+    marginRight: 45,
   },
   numberProduct: {
     fontWeight: '700',

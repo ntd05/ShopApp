@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
 import ProductListItem from '../components/ProductListItem';
-import firebase from '../firebase';
 import { getDatabase, ref, onValue, query, equalTo, orderByChild, orderByKey, orderBy } from "firebase/database";
 
 export default function Category({ route }) {
@@ -17,7 +16,7 @@ export default function Category({ route }) {
     const starCountRef = query(ref(db, "products"), orderByChild("category"), equalTo(categoryId));
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      if (!Array.isArray(data)) setProducts(Object.values(data))
+      if (!Array.isArray(data)) data && setProducts(Object.values(data))
       else
         setProducts(data);
     });
@@ -47,9 +46,7 @@ styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    paddingHorizontal: 8
+    paddingHorizontal: 8,
 
   }
 });
-
-// nhan ngok nghek

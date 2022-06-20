@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { StyleSheet, FlatList } from 'react-native';
 import CategoryListItem from '../components/CategoryListItem';
-import { useNavigation } from '@react-navigation/native';
-import firebase from '../firebase';
 import { getDatabase, ref, onValue } from "firebase/database";
 
 export default function Categories({ navigation }) {
 
-  const [categories, setCategories] = useState([{}]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const db = getDatabase();

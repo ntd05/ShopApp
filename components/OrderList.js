@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, TouchableOpacity, FlatList, Alert } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, onValue, update, query, orderByChild, equalTo } from 'firebase/database';
+import { getDatabase, ref, onValue, update, query, orderByChild, equalTo, remove } from 'firebase/database';
 import CartListItem from '../components/CartListItem';
 import { formatPriceType } from '../lib/utils';
 import { useCallback } from 'react';
@@ -55,7 +55,19 @@ export default function OrderList({ status }) {
 	}
 
 	const handleCancel = async (orderId) => {
-
+		try {
+			const db = getDatabase();
+			await remove(ref(db, "orders/" + orderId))
+				.then(() => {
+				})
+				.catch((e) => {
+					console.log(e);
+				})
+			fetchData();
+			Alert.alert("Successfully", "Cancel successfully", [{ text: "ok" }])
+		} catch (error) {
+			console.log(error)
+		}
 	}//het loi r can gi nua ha trung con cai ma
 
 	return (
